@@ -1,0 +1,21 @@
+﻿@model List<Movie>
+
+@foreach (Movie m in @Model) {
+	<h2>@m.Name</h2>
+	<p>Genre: @m.Genre</p>
+	<p>@m.Description</p>
+
+	<p>Release date: @m.ReleaseYear</p>
+
+	<p>Budget: $@m.Budget</p>
+
+	<p>Rating: NYI</p>
+
+	<h3>Actors:</h3>
+	<ul>
+		@foreach (Actor a in m.Actors)
+		{
+			<li>@a.Name</li>
+		}
+	</ul>
+}

@@ -1,0 +1,25 @@
+﻿@model Movie
+
+<h1>Movie name</h1>
+<h2>@Model.Name</h2>
+
+<h3>Genre: @Model.Genre</h3>
+
+<h4>Synopsis: @Model.Description</h4>
+
+<h3>Release date</h3>
+<h4>@Model.ReleaseYear</h4>
+
+<h3>Budget: $@Model.Budget</h3>
+
+<h2>Rating: NYI</h2> @* TODO: Make a method for average *@
+
+<h3>Actors:</h3>
+<ul>
+	@foreach (Actor a in Model.Actors)
+	{
+		<li>@a.Name</li>
+	}
+</ul>
+
+<h3></h3>
