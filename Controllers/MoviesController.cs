@@ -17,6 +17,8 @@ namespace IntroToLinqAndASP.Controllers
 		{
 			Movie movie = Context.Movies.First(m => m.Id == id);
 
+			ViewBag.AverageRating = CalculateOverallRating(id);
+
 			return View("Details", movie);
 		}
 
@@ -54,13 +56,21 @@ namespace IntroToLinqAndASP.Controllers
 		// I know I screwed this one up somehow but I don't know how to fix it 
 		// I can't call .average on movie.Ratings.Average(); unless I use .first and then I don't know how to return it 
 		// So I'm just returning the movie context and solving average in the view 
-		public IActionResult CalculateOverallRating(int id)
+		public double CalculateOverallRating(int id)
 		{
 			// get movie of id
 			Movie movie = Context.Movies.First(m => m.Id == id);
 
-			return View("AverageRating", movie);
+			if (movie.Ratings.Any())
+			{ 
+				return movie.Ratings.Average(r =>
+				{
+					return (double)r.UserRating;
+				});
+			} else
+			{
+				return 0;
+			}
 		}
-
 	}
 }

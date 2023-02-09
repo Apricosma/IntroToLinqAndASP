@@ -17,6 +17,7 @@ namespace IntroToLinqAndASP.Models
 		{
 			_id = id;
 			_name = name;
+			Ratings = new List<Rating>();
 		}
 	}
 }

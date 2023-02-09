@@ -6,8 +6,8 @@ namespace IntroToLinqAndASP.Data
 	public class Context
 	{
 		// this is a colossal mess but refactoring it would take too much time 
-		public static HashSet<Actor> Actors= new HashSet<Actor>();
-		public static HashSet<Movie> Movies= new HashSet<Movie>();
+		public static HashSet<Actor> Actors = new HashSet<Actor>();
+		public static HashSet<Movie> Movies = new HashSet<Movie>();
 		public static List<Rating> Ratings = new List<Rating>();
 		public static HashSet<User> Users = new HashSet<User>();
 
@@ -16,7 +16,15 @@ namespace IntroToLinqAndASP.Data
 		private static int _userIdCounter = 100000;
 
 		static Context()
-		{
+		{           
+			// Users
+			User userOne = new User(_userIdCounter++, "Tim");
+			User userTwo = new User(_userIdCounter++, "Larry");
+			User userThree = new User(_userIdCounter++, "Bill");
+
+			Users.Add(userOne);
+			Users.Add(userTwo);
+
 			// first movie
 			Actor jenny = new Actor(_actorIdCounter++, "Jenny Monroe", 1539243.23);
 			Actors.Add(jenny);
@@ -26,6 +34,10 @@ namespace IntroToLinqAndASP.Data
 			avgRomcom.Actors.Add(jenny);
 			Movies.Add(avgRomcom);
 			jenny.Movies.Add(avgRomcom);
+
+			Rating RomcomRating1 = new Rating(7.3, userOne, avgRomcom);
+			userOne.Ratings.Add(RomcomRating1);
+			avgRomcom.Ratings.Add(RomcomRating1);
 
 			// second movie
 			Actor jotaro = new Actor(_actorIdCounter++, "Jotaro Kujo", 2194234.99);
@@ -42,6 +54,14 @@ namespace IntroToLinqAndASP.Data
 			jotaro.Movies.Add(stardustCrusaders);
 			jonathan.Movies.Add(stardustCrusaders);
 
+			Rating stardustRating1 = new Rating(8.7, userOne, stardustCrusaders);
+			userOne.Ratings.Add(stardustRating1);
+			stardustCrusaders.Ratings.Add(stardustRating1);
+
+			Rating stardustRating2 = new Rating(8.4, userTwo, stardustCrusaders);
+			userTwo.Ratings.Add(stardustRating2);
+			stardustCrusaders.Ratings.Add(stardustRating2);
+
 			// third movie
 			Actor vivy = new Actor(_actorIdCounter++, "Vivy Fluorite", 3102973.55);
 			Actors.Add(vivy);
@@ -54,14 +74,18 @@ namespace IntroToLinqAndASP.Data
 			Movies.Add(fluoriteEyesSong);
 			vivy.Movies.Add(fluoriteEyesSong);
 
-			// Users
-			// I honestly got kind of stuck here because I hadn't planned it out from the beginning and it's really
-			// hard to rework my entire program
-			User userOne = new User(_userIdCounter++, "Tim");
-			User userTwo = new User(_userIdCounter++, "Larry");
+			Rating fluoriteRating1 = new Rating(9.1, userOne, fluoriteEyesSong);
+			userOne.Ratings.Add(fluoriteRating1);
+			fluoriteEyesSong.Ratings.Add(fluoriteRating1);
 
-			Users.Add(userOne);
-			Users.Add(userTwo);
+			Rating fluoriteRating2 = new Rating(9.4, userTwo, fluoriteEyesSong);
+			userTwo.Ratings.Add(fluoriteRating2);
+			fluoriteEyesSong.Ratings.Add(fluoriteRating2);
+
+			Rating fluoriteRating3 = new Rating(9.3, userThree, fluoriteEyesSong);
+			userThree.Ratings.Add(fluoriteRating3);
+			fluoriteEyesSong.Ratings.Add(fluoriteRating3);
+
 		}
 	}
 }

@@ -2,15 +2,10 @@
 
 @foreach (Movie m in @Model) {
 	<h2>@m.Name <a asp-action="Details" asp-route-id="@m.Id">Details</a></h2>
-	<p>Id: @m.Id</p>
 	<p>Genre: @m.Genre</p>
 	<p>@m.Description</p>
 
 	<p>Release date: @m.ReleaseYear</p>
-
-	<p>Budget: $@m.Budget</p>
-
-	<p>Rating: NYI</p>
 
 	<h3>Actors:</h3>
 	<ul>
