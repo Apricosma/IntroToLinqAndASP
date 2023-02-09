@@ -5,6 +5,7 @@ namespace IntroToLinqAndASP.Data
 {
 	public class Context
 	{
+		// this is a colossal mess but refactoring it would take too much time 
 		public static HashSet<Actor> Actors= new HashSet<Actor>();
 		public static HashSet<Movie> Movies= new HashSet<Movie>();
 		public static List<Rating> Ratings = new List<Rating>();
@@ -33,6 +34,7 @@ namespace IntroToLinqAndASP.Data
 
 			avgRomcom.Actors.Add(jenny);
 			Movies.Add(avgRomcom);
+			jenny.Movies.Add(avgRomcom);
 
 			List<double> romcomRatings = new List<double> { 6.4, 5.5, 7.3, 7.6 };
 			Rating avgRomcomRatings = new Rating(romcomRatings);
@@ -52,6 +54,8 @@ namespace IntroToLinqAndASP.Data
 			stardustCrusaders.Actors.Add(jotaro);
 			stardustCrusaders.Actors.Add(jonathan);
 			Movies.Add(stardustCrusaders);
+			jotaro.Movies.Add(stardustCrusaders);
+			jonathan.Movies.Add(stardustCrusaders);
 
 			List<double> movie2Ratings = new List<double> { 9.3, 7.4, 8.5, 9.4 };
 			Rating stardustCrusadersRatings = new Rating(movie2Ratings);
@@ -69,6 +73,7 @@ namespace IntroToLinqAndASP.Data
 
 			fluoriteEyesSong.Actors.Add(vivy);
 			Movies.Add(fluoriteEyesSong);
+			vivy.Movies.Add(fluoriteEyesSong);
 
 			List<double> movie3Ratings = new List<double> { 9.3, 8.4, 9.5, 9.4 };
 			Rating fluoriteEyesRatings = new Rating(movie3Ratings);

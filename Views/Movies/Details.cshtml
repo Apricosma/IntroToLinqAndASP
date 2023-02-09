@@ -18,7 +18,7 @@
 <ul>
 	@foreach (Actor a in Model.Actors)
 	{
-		<li>@a.Name</li>
+		<li>@a.Name <a asp-controller="Actors" asp-action="Details" asp-route-id="@a.Id">Details</a></li>
 	}
 </ul>
 

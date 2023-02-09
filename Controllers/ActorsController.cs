@@ -13,12 +13,19 @@ namespace IntroToLinqAndASP.Controllers
 			return View("Index", actors);
 		}
 
+		public IActionResult Details(int id)
+		{
+			Actor actor = Context.Actors.First();
+
+			return View("Details", actor);
+		}
+
 		public IActionResult HighestPaidActor()
 		{
 			List<Actor> actors = Context.Actors.OrderBy(a => a.Salary).ToList();
 			Actor actor = actors.Last(); 
 
-			return View("Details", actor);
+			return View("HighestPaidActor", actor);
 		}
 	}
 }

@@ -13,6 +13,13 @@ namespace IntroToLinqAndASP.Controllers
 			return View("Index", movies);
 		}
 
+		public IActionResult Details(int id)
+		{
+			Movie movie = Context.Movies.First(m => m.Id == id);
+
+			return View("Details", movie);
+		}
+
 		public IActionResult GetMovieInfo(int id)
 		{
 			Movie movie = Context.Movies.First(m => m.Id == id);
