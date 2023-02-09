@@ -1,7 +1,7 @@
 ﻿@model List<Movie>
 
 @foreach (Movie m in @Model) {
-	<h2>@m.Name</h2>
+	<h2>@m.Name <a asp-action="Details" asp-route-id="@m.Id">Details</a></h2>
 	<p>Id: @m.Id</p>
 	<p>Genre: @m.Genre</p>
 	<p>@m.Description</p>
@@ -16,7 +16,7 @@
 	<ul>
 		@foreach (Actor a in m.Actors)
 		{
-			<li>@a.Name</li>
+			<li>@a.Name <a asp-controller="Actors" asp-action="Details" asp-route-id="@a.Id">Details</a></li>
 		}
 	</ul>
 }
