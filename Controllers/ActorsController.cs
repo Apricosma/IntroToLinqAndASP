@@ -15,9 +15,22 @@ namespace IntroToLinqAndASP.Controllers
 
 		public IActionResult Details(int id)
 		{
-			Actor actor = Context.Actors.First(a => a.Id == id);
-
-			return View("Details", actor);
+			try
+			{
+				Actor actor = Context.Actors.First(a => a.Id == id);
+				if (actor == null)
+				{
+					return NotFound();
+				}
+				else
+				{
+					return View("Details", actor);
+				}
+			} catch(Exception ex)
+			{
+				return BadRequest();
+			}
+			
 		}
 
 		public IActionResult HighestPaidActor()
