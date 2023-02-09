@@ -2,14 +2,17 @@
 {
 	public class Rating
 	{
-		private List<double> _movieRating;
-		public List<double> movieRating { get { return _movieRating; } }
+		private int _userRating;
+		public int UserRating { get { return _userRating; } }
+		public User User { get; set; }
 
 		public Movie Movie { get; set; }
 
-		public Rating(List<double> movieRating)
+		public Rating(int rating, User user, Movie movie)
 		{
-			_movieRating = movieRating;
+			_userRating = rating;
+			User = user;
+			Movie = movie;
 		}
 	}
 }

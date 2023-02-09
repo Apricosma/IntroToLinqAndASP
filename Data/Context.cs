@@ -27,12 +27,6 @@ namespace IntroToLinqAndASP.Data
 			Movies.Add(avgRomcom);
 			jenny.Movies.Add(avgRomcom);
 
-			List<double> romcomRatings = new List<double> { 6.4, 5.5, 7.3, 7.6 };
-			Rating avgRomcomRatings = new Rating(romcomRatings);
-			avgRomcomRatings.Movie = avgRomcom;
-			avgRomcom.Ratings.Add(avgRomcomRatings);
-			Ratings.Add(avgRomcomRatings);
-
 			// second movie
 			Actor jotaro = new Actor(_actorIdCounter++, "Jotaro Kujo", 2194234.99);
 			Actor jonathan = new Actor(_actorIdCounter++, "Jonathan Joestar", 372183.45);
@@ -48,12 +42,6 @@ namespace IntroToLinqAndASP.Data
 			jotaro.Movies.Add(stardustCrusaders);
 			jonathan.Movies.Add(stardustCrusaders);
 
-			List<double> movie2Ratings = new List<double> { 9.3, 7.4, 8.5, 9.4 };
-			Rating stardustCrusadersRatings = new Rating(movie2Ratings);
-			stardustCrusadersRatings.Movie = stardustCrusaders;
-			stardustCrusaders.Ratings.Add(stardustCrusadersRatings);
-			Ratings.Add(stardustCrusadersRatings);
-
 			// third movie
 			Actor vivy = new Actor(_actorIdCounter++, "Vivy Fluorite", 3102973.55);
 			Actors.Add(vivy);
@@ -65,12 +53,6 @@ namespace IntroToLinqAndASP.Data
 			fluoriteEyesSong.Actors.Add(vivy);
 			Movies.Add(fluoriteEyesSong);
 			vivy.Movies.Add(fluoriteEyesSong);
-
-			List<double> movie3Ratings = new List<double> { 9.3, 8.4, 9.5, 9.4 };
-			Rating fluoriteEyesRatings = new Rating(movie3Ratings);
-			stardustCrusadersRatings.Movie = fluoriteEyesSong;
-			fluoriteEyesSong.Ratings.Add(fluoriteEyesRatings);
-			Ratings.Add(fluoriteEyesRatings);
 
 			// Users
 			// I honestly got kind of stuck here because I hadn't planned it out from the beginning and it's really
