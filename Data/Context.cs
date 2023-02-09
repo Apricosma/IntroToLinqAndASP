@@ -16,6 +16,15 @@ namespace IntroToLinqAndASP.Data
 
 		static Context()
 		{
+			// Users
+			// I honestly got kind of stuck here because I hadn't planned it out from the beginning and it's really
+			// hard to rework my entire program
+			User userOne = new User(_userIdCounter++, "Tim");
+			User userTwo = new User(_userIdCounter++, "Larry");
+
+			Users.Add(userOne);
+			Users.Add(userTwo);
+
 			// first movie
 			Actor jenny = new Actor(_actorIdCounter++, "Jenny Monroe", 1539243.23);
 			Actors.Add(jenny);
