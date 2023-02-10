@@ -74,46 +74,25 @@ namespace IntroToLinqAndASP.Controllers
 			}
 		}
 
-		//[HttpGet]
-		//public IActionResult AddRating(Rating rating)
-		//{
-		//	if (rating == null)
-		//	{
-		//		return NotFound();
-		//	} else if (rating.UserRating == null)
-		//	{
-		//		ViewBag.Rating = rating;
-		//		return View();
-		//	} else
-		//	{
-		//		return RedirectToAction("Error");
-		//	}
-		//}
-
-		//[HttpPost]
-		//public IActionResult AddRating(Rating rating, int movieId, int userId)
-		//{
-		//	Movie movie = Context.Movies.First(s => s.Id == movieId);
-		//	User user = Context.Users.First(u => u.Id == userId);
-
-		//	user.Ratings.Add(rating);
-		//	movie.Ratings.Add(rating);
-			
-		//	return RedirectToAction("Details", movieId);
-		//}
-
-		//[HttpGet]
-		//public IActionResult Create()
-		//{
-		//	return View();
-		//}
-
 		[HttpPost]
 		public IActionResult CreateRating(double Rating, string Comment, int UserId, int MovieId)
 		{
-			Context.CreateRating(Rating, Comment, MovieId, UserId);
 			Movie movie = Context.Movies.First(m => m.Id == MovieId);
-
+			try
+			{
+				if (Rating >= 1 && Rating <= 10)
+				{
+					Context.CreateRating(Rating, Comment, MovieId, UserId);
+				}
+				else
+				{
+					// deny the input? I don't know how to do this other than to return an error
+					return BadRequest("Rating must be between 1 and 10");
+				}
+			} catch(Exception ex)
+			{
+				return BadRequest();
+			}
 			return RedirectToAction("Details", movie);
 		}
 	}
