@@ -1,0 +1,17 @@
+﻿@model Actor
+
+@if(Model == null)
+{
+	<h2>No actor found with given ID</h2>
+} else {
+	<h2>@Model.Name</h2>
+	<h4>Salary: $@Model.Salary</h4>
+
+	<h2>Movies</h2>
+	<ul>
+		@foreach(Movie m in Model.Movies)
+		{
+			<li>@m.Name <a asp-controller="Movies" asp-action="Details" asp-route-id="@m.Id">Details</a></li>
+		}
+	</ul>
+}
