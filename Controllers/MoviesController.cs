@@ -114,7 +114,7 @@ namespace IntroToLinqAndASP.Controllers
 			Context.CreateRating(Rating, Comment, MovieId, UserId);
 			Movie movie = Context.Movies.First(m => m.Id == MovieId);
 
-			return View("Details", movie);
+			return RedirectToAction("Details", movie);
 		}
 	}
 }
