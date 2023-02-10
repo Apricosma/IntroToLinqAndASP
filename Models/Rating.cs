@@ -14,14 +14,14 @@
 			get { return _userComment; } 
 			set
 			{
-				if (value.Length > 2 && value.Length < 250)
-				{
-					_userComment = value;
-				} else
-				{
-					throw new ArgumentException("Comments must be between 2 and 250 characters");
-				}
+				_userComment = value;
 			}
+		}
+
+		public Rating(double rating, string? userComment)
+		{
+			_userRating = rating;
+			UserComment = userComment;
 		}
 
 		public Rating(double rating, User user, Movie movie)

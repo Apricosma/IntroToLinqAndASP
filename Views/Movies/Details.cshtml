@@ -12,7 +12,7 @@
 
 <h3>Budget: $@Model.Budget</h3>
 
-<h2>Rating: @Math.Round(ViewBag.AverageRating, 2)</h2> @* TODO: Make a method for average *@
+<h2>Rating: @ViewBag.AverageRating</h2> @* TODO: Make a method for average *@
 
 <h3>Actors:</h3>
 <ul>
@@ -22,4 +22,18 @@
 	}
 </ul>
 
-<h3></h3>
+<h2>Ratings/Reviews!</h2>
+<form method="post" asp-action="CreateRating" asp-controller="Movies">
+	<input type="number" name="Rating" id="Rating" step="0.01" placeholder="Rating.."/>
+	<input type="text" name="Comment" id="Comment" placeholder="Comment..." />
+	<input type="number" name="UserId" id="UserId" placeholder="User ID (100001)"/>
+	<label for="UserId">User Id (make name later)</label>
+	<input type="hidden" name="MovieId" id="MovieId" value="@Model.Id" />
+	<input type="submit" value="Submit" />
+</form>
+<ul class="list-unstyled">
+	@foreach (Rating r in Model.Ratings)
+	{
+		<li><h3 class="small">@r.User.Name: @r.UserRating @r.UserComment</h3></li>
+	}
+</ul>

@@ -15,6 +15,17 @@ namespace IntroToLinqAndASP.Data
 		private static int _movieIdCounter = 1000;
 		private static int _userIdCounter = 100000;
 
+		public static void CreateRating(double rating, string comment, int MovieId, int UserId)
+		{
+			User user = Context.Users.First(u => u.Id == UserId);
+			Movie movie = Context.Movies.First(m => m.Id == MovieId);
+			Rating newRating = new Rating(rating, user, movie, comment);
+
+			Ratings.Add(newRating);
+			user.Ratings.Add(newRating);
+			movie.Ratings.Add(newRating);
+		}
+
 		static Context()
 		{           
 			// Users
@@ -24,6 +35,7 @@ namespace IntroToLinqAndASP.Data
 
 			Users.Add(userOne);
 			Users.Add(userTwo);
+			Users.Add(userThree);
 
 			// first movie
 			Actor jenny = new Actor(_actorIdCounter++, "Jenny Monroe", 1539243.23);
