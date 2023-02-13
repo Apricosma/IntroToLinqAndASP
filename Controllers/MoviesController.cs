@@ -1,7 +1,7 @@
 ﻿using IntroToLinqAndASP.Data;
 using IntroToLinqAndASP.Models;
+using IntroToLinqAndASP.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 
 namespace IntroToLinqAndASP.Controllers
 {
@@ -94,6 +94,36 @@ namespace IntroToLinqAndASP.Controllers
 				return BadRequest();
 			}
 			return RedirectToAction("Details", movie);
+		}
+
+		[HttpGet]
+		public IActionResult CompareMovies()
+		{
+			CompareMovies vm = new CompareMovies(Context.Movies);
+
+			return View(vm);
+		}
+
+		[HttpPost]
+		public IActionResult CompareMovies(CompareMovies vm)
+		{
+			Movie selectMovieOne = Context.Movies.First(m => m.Id == vm.movieOne);
+			Movie selectMovieTwo = Context.Movies.First(m => m.Id == vm.movieTwo);
+
+			return RedirectToAction("DisplayComparedMovies", vm);
+		}
+
+		public IActionResult DisplayComparedMovies(int movieOne, int movieTwo) 
+		{
+			List<Movie> movies = new List<Movie>();
+
+			Movie movie1 = Context.Movies.First(m => m.Id == movieOne);
+			Movie movie2 = Context.Movies.First(m => m.Id == movieTwo);
+
+			movies.Add(movie1);
+			movies.Add(movie2);
+
+			return View("DisplayComparedMovies", movies);
 		}
 	}
 }
