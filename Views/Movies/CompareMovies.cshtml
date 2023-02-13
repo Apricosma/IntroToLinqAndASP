@@ -1,0 +1,25 @@
+﻿@model IntroToLinqAndASP.Models.ViewModels.CompareMovies
+
+@*<form asp-action="CompareMovies" method="post">
+	<select asp-for="movieOne" name="selectionOne" id="selectionOne">
+		@foreach(Movie m in Model.Movies)
+		{
+			<option value="@m.Id">@m.Name</option>
+		}
+	</select>
+
+	<select asp-for="movieTwo" name="selectionTwo" id="selectionTwo">
+		@foreach (Movie m in Model.Movies)
+		{
+			<option value="@m.Id">@m.Name</option>
+		}
+	</select>
+
+	<input type="submit" value="Submit" />
+</form>*@
+
+<form asp-action="CompareMovies" method="post">
+	<select asp-for="movieOne" asp-items="Model.MovieSelects"></select>
+	<select asp-for="movieTwo" asp-items="Model.MovieSelects"></select>
+	<input type="submit" value="Submit" />
+</form>
