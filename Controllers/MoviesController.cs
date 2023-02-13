@@ -96,6 +96,9 @@ namespace IntroToLinqAndASP.Controllers
 			return RedirectToAction("Details", movie);
 		}
 
+		// I'm really struggling with httpget and httppost, I don't really understand what
+		// they're doing. 
+		// I understand vm passing, but not "passing an object from a get to a post" etc
 		[HttpGet]
 		public IActionResult CompareMovies()
 		{
